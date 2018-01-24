@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="manifest" href="manifest.json">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+
+<div class="wraper">
+	<div id="load" class="loading">
+		<div class="percent">
+			<span id="load-inner"></span>
+		</div>
+	</div>
+
+	<header class="header">
+		<button id="settings" class="button">≡</button>
+	</header>
+
+	<div id="app" class="app">
+
+		<div id="weater-widget" class="weater-widget" data-weater>
+
+			<div class="icon"></div>
+			<div class="temp"></div>
+			<div class="wind"></div>
+
+		</div>
+
+		<div class="control-form">
+			<div class="form-row">
+				<button class="button" data-get-coords>Обновить для текущего положения</button>
+			</div>
+			<div class="form-row">
+				<input id="city" type="text" name="city" placeholder="city" data-city-name>
+				<button  class="button" data-get-coords-city>Обновить для города</button>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
