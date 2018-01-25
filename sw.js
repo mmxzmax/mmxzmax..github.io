@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v11';
+var staticCacheName = 'weater-static-v12';
 var allCaches = [
     staticCacheName
 ];
