@@ -5,7 +5,7 @@
          let latitude = coords[0];
          let longitude = coords[1];
          let url = `https://api.openweathermap.org/data/2.5/weather?APPID=${token}&lat=${latitude}&lon=${longitude}`;
-         //url = 'resp.json';
+        // url = 'resp.json';
          return new Promise((resolve, reject)=> {
 
              var xhr = new XMLHttpRequest();

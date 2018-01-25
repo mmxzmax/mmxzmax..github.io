@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v10';
+var staticCacheName = 'weater-static-v3';
 var allCaches = [
     staticCacheName
 ];
@@ -12,11 +12,18 @@ self.addEventListener('install', function(event) {
                 'js/main.js',
                 'js/plugins.js',
                 'css/main.css',
+                'js/jquery.js',
                 'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
                 'js/idb.js',
+                'js/Page.js',
+                'js/WeaterWidget.js',
+                'js/DaysWidget.js',
                 'js/renderer.js',
                 'js/LocationService.js',
                 'js/weater-service.js',
+                'js/dbService.js',
+                'js/Informer.js',
+                'js/AppLogic.js',
                 'weater_icons.json',
                 '16days.json',
                 'resp.json',
@@ -63,4 +70,11 @@ self.addEventListener('fetch', function(event) {
             return response || fetch(event.request);
         })
     );
+});
+
+
+self.addEventListener('message', function(event) {
+    if (event.data.action === 'skipWaiting') {
+        self.skipWaiting();
+    }
 });

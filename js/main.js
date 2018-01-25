@@ -1,11 +1,4 @@
 
-var libs=[
-    'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
-    'js/idb.js',
-    'js/renderer.js',
-    'js/LocationService.js',
-    'js/weater-service.js'
-];
 
 class WeaterApp{
     constructor(libs,callBack) {
@@ -24,15 +17,20 @@ class WeaterApp{
             curLib.type='text/javascript';
             document.body.appendChild(curLib);
             curLib.src=lib;
+            curLib.async=true;
             console.log(`loading ${lib}`);
             var self=this;
-            curLib.addEventListener('load',function(){
-                "use strict";
+            var start=new Date();
+
+            curLib.onload = function() {
                 self.initPercent=self.initPercent+self.initPercentChange;
-                self.loadInfo('load'+lib,self.initPercent);
+                WeaterApp.loadInfo('load'+lib,self.initPercent);
                 console.log(`${lib} ok`);
                 resolve();
-            });
+                let end=new Date();
+                let loadingTime=new Date(end-start);
+                console.log('ready after:', loadingTime.getMilliseconds(),'ms');
+            };
             curLib.addEventListener('error',function(e){
                 "use strict";
                 console.log(`${lib} loading error`);
@@ -41,41 +39,27 @@ class WeaterApp{
         });
     }
     initApp() {
-        if ('serviceWorker' in navigator) {
-           window.addEventListener('load', function() {
-               navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                   // Регистрация успешна
-                   console.log('ServiceWorker registration successful with scope: ', registration.scope);
-               }).catch(function(err) {
-                   // Регистрация не успешна
-                   console.log('ServiceWorker registration failed: ', err);
-               });
-           });
-        }
+       
+
+
+
+
+
+
         var self=this;
         this.appVidget.classList.add('loading');
-        this.loadVidget.classList.add('show');
-        self.initPercentChange=self.loadVidget.offsetWidth/self.libs.length;
+        self.initPercentChange=Math.round(self.loadVidget.offsetWidth/self.libs.length);
         console.log('шаг',self.initPercentChange);
         if(this.libs.length>1){
+            var i=0;
+            var pipe= list(libs);
+            load(this.libs,pipe);
 
-            Promise.all(getLibs()).then(
-                ()=>{
-                    this.appVidget.classList.remove('loading');
-                    this.loadInfo('ready',this.loadVidget.offsetWidth);
-                    setTimeout(()=>this.loadVidget.classList.remove('show'),200);
-                    console.log('load success');
-                    this.start();
-                }
-            ).catch((data)=>{
-                console.log('libs loading error');
-            })
         } else {
             this.loadLibs(this.libs[0]).then(
                 ()=>{
                     this.appVidget.classList.remove('loading');
-                    this.loadInfo('ready',this.loadVidget.offsetWidth);
-                    setTimeout(()=>this.loadVidget.classList.remove('show'),200);
+                    WeaterApp.loadInfo('ready',this.loadVidget.offsetWidth);
                     console.log('load success');
                     this.start();
                 }
@@ -83,29 +67,53 @@ class WeaterApp{
                 console.log('libs loading error');
             })
         }
-        function getLibs() {
-            var func=[];
-            for(let lib of self.libs){
-                func.push(self.loadLibs(lib));
+
+        function* list(value) {
+            for (var item of value) {
+                yield self.loadLibs(item);
             }
-            return func;
+        }
+
+        function load(libs,pipe){
+            let libsCount=libs.length;
+            let loadVidgetWidth=self.loadVidget.offsetWidth;
+            let increnent=loadVidgetWidth/libsCount;
+            var it=pipe.next();
+            if(!it.done){
+                i++;
+                WeaterApp.loadInfo('loading:'+libs[i],increnent*i);
+               it.value.then(()=>{
+                   load(libs,pipe);
+               })
+            } else {
+                self.appVidget.classList.remove('loading');
+                WeaterApp.loadInfo('ready',loadVidgetWidth);
+                console.log('load success');
+                self.start();
+            }
         }
     }
-    loadInfo(message,percent){
+    static loadInfo(message,percent){
         let cur=document.getElementById('load-inner');
-        this.loadVidget.setAttribute('data-message',message);
+        let vidget=document.getElementById('load');
+        if(percent==0){
+            vidget.classList.add('show');
+        }
+        vidget.setAttribute('data-message',message);
         cur.style.width=parseInt(percent)+'px';
+        if(percent>=vidget.offsetWidth){
+            setTimeout(()=>vidget.classList.remove('show'),200);
+        }
     }
     start (){
         this.callback();
         return true
     }
 
+    
+
 }
-
 window.app= new WeaterApp(libs,appStart);
-
-
 function appStart(){
     console.log('ready');
     window.page= new PageRenderer();

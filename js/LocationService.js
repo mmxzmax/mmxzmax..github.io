@@ -1,7 +1,7 @@
 class LocationService{
     static getYourCoords(){
         return new Promise((resolve,reject)=>{
-            ymaps.geolocation.get({
+            window.ymaps.geolocation.get({
                 provider: 'yandex',
                 autoReverseGeocode: true
             }).then((result)=>{
@@ -12,7 +12,7 @@ class LocationService{
     }
     static  getCityCoords(city){
         return new Promise((resolve,reject)=>{
-            var myGeocoder = ymaps.geocode(city);
+            var myGeocoder = window.ymaps.geocode(city);
             myGeocoder.then(
                 (res)=>{
                     resolve(res.geoObjects.get(0).geometry._coordinates);
