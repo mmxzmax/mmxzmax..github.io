@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v13';
+var staticCacheName = 'weater-static-v15';
 var allCaches = [
     staticCacheName
 ];
@@ -9,8 +9,8 @@ self.addEventListener('install', function(event) {
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
                 '/',
-                'js/main.js',
                 'js/plugins.js',
+                'js/main.js',
                 'css/main.css',
                 'js/jquery.js',
                 'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
