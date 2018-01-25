@@ -3,7 +3,7 @@ class DaysWidget{
         this.icons=icons;
         this.data=data;
         this.render();
-    }
+    } 
     template(list){
         var block='';
         let options = {

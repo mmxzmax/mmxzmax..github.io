@@ -109,7 +109,7 @@ class WeaterApp{
         this.callback();
         return true
     }
-
+ 
     
 
 }

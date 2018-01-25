@@ -27,7 +27,7 @@ class AppLogic{
                 this._trackInstalling(reg.installing);
             });
         });
-
+ 
 
         let refreshing;
         navigator.serviceWorker.addEventListener('controllerchange', function() {

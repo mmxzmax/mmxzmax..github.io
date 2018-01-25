@@ -4,7 +4,7 @@
   function toArray(arr) {
     return Array.prototype.slice.call(arr);
   }
-
+ 
   function promisifyRequest(request) {
     return new Promise(function(resolve, reject) {
       request.onsuccess = function() {

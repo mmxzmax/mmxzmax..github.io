@@ -64,3 +64,4 @@ class WeaterWidget{
         console.log('weater widget ready');
     }
 }
+ 

@@ -38,3 +38,4 @@ class PageRenderer{
         window.daysWidget= new DaysWidget(data,this.icons);
     }
 }
+ 
