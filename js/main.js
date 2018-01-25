@@ -1,3 +1,5 @@
+
+
 class WeaterApp{
     constructor(libs,callBack) {
         this.libs=libs;
@@ -7,6 +9,7 @@ class WeaterApp{
         this.initPercentChange=1;
         this.appVidget=document.getElementById('app');
         this.initApp();
+
     }
     loadLibs(lib) {
         return new Promise((resolve, reject)=>{
@@ -70,8 +73,8 @@ class WeaterApp{
             let increnent=loadVidgetWidth/libsCount;
             var it=pipe.next();
             if(!it.done){
-                i++;
                 WeaterApp.loadInfo('loading:'+libs[i],increnent*i);
+                i++;
                it.value.then(()=>{
                    load(libs,pipe);
                })
@@ -99,6 +102,9 @@ class WeaterApp{
         this.callback();
         return true
     }
+ 
+    
+
 }
 window.app= new WeaterApp(libs,appStart);
 function appStart(){
