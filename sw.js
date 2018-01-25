@@ -23,7 +23,7 @@ self.addEventListener('install', function(event) {
                 'js/weater-service.js',
                 'js/dbService.js',
                 'js/Informer.js',
-                'js/AppLogic.js',
+                'js/appLogic.js',
                 'weater_icons.json',
                 '16days.json',
                 'resp.json',
