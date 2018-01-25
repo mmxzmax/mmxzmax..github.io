@@ -6,8 +6,6 @@
  * @this {AppDb}
  * @constructor
  */
- 
-
 class AppDb{
     constructor(dbName,objStoreName){
         this.dbname=dbName;

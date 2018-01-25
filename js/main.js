@@ -1,5 +1,3 @@
-
-
 class WeaterApp{
     constructor(libs,callBack) {
         this.libs=libs;
@@ -9,7 +7,6 @@ class WeaterApp{
         this.initPercentChange=1;
         this.appVidget=document.getElementById('app');
         this.initApp();
-
     }
     loadLibs(lib) {
         return new Promise((resolve, reject)=>{
@@ -39,13 +36,6 @@ class WeaterApp{
         });
     }
     initApp() {
-       
-
-
-
-
-
-
         var self=this;
         this.appVidget.classList.add('loading');
         self.initPercentChange=Math.round(self.loadVidget.offsetWidth/self.libs.length);
@@ -109,9 +99,6 @@ class WeaterApp{
         this.callback();
         return true
     }
- 
-    
-
 }
 window.app= new WeaterApp(libs,appStart);
 function appStart(){

@@ -1,5 +1,4 @@
 window.dataBase = new AppDb('weater-pwa','keyval-store');
-
 class AppLogic{
     constructor(){
         this.setEvents();

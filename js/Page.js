@@ -26,4 +26,3 @@ class Page{
         this.appVidget.innerHTML = this.template;
     }
 }
- 

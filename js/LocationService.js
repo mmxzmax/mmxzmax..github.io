@@ -8,7 +8,6 @@ class LocationService{
                 resolve(result.geoObjects.get(0).geometry._coordinates);
             }).catch(()=>console.log('error'));
         });
-
     }
     static  getCityCoords(city){
         return new Promise((resolve,reject)=>{
