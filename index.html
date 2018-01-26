@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Weather</title>
     <link rel="stylesheet" href="css/main.css">
 	<link rel="manifest" href="manifest.json">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
@@ -19,7 +19,9 @@
 	<header class="header">
 		<button id="settings" class="button">≡</button>
 	</header>
+	<!--app block-->
 	<div id="app" class="app"></div>
+	<!--app block-->
 	<div id="informer" class="informer"></div>
 </div>
 <!--Список библиотек для загрузчика-->
@@ -40,8 +42,9 @@
 	];
 </script>
 <!--end Список библиотек для загрузчика-->
-<script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+	<!--Библиотеки загружаются по порядку-->
+<script type="text/javascript" src="js/plugins.js"></script><!--тут полифил Promise-->
+<script type="text/javascript" src="js/main.js"></script><!--входная точка приложения-->
 
 </body>
 </html>
