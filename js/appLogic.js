@@ -5,8 +5,8 @@ class AppLogic{
         this.setEvents();
         this.displayFromCache();
         this.informer= new Informer();
-
-
+        this.endpoint=null;
+        let self=this;
         navigator.serviceWorker.register('/sw.js').then((reg)=> {
 
             if (!navigator.serviceWorker.controller) {
@@ -26,6 +26,27 @@ class AppLogic{
             reg.addEventListener('updatefound', ()=>{
                 this._trackInstalling(reg.installing);
             });
+
+            return reg.pushManager.getSubscription()
+                .then(function(subscription) {
+                    if (subscription) {
+                        return subscription;
+                    }
+                    return reg.pushManager.subscribe({ userVisibleOnly: true });
+                }).then(function(subscription) {
+                    self.endpoint = subscription.endpoint;
+                    document.getElementById('curl').textContent = 'curl -H "TTL: 60" -X POST ' + self.endpoint;
+                    fetch('./register', {
+                        method: 'post',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            endpoint: subscription.endpoint
+                        })
+                    });
+                });
+
         });
  
 
@@ -36,6 +57,16 @@ class AppLogic{
             refreshing = true;
         });
 
+    }
+    sendNot(){
+        var delay = 20;
+        var ttl = 0;
+        fetch('./sendNotification?endpoint=' + this.endpoint + '&delay=' + delay +
+            '&ttl=' + ttl,
+            {
+                method: 'post'
+            }
+        );
     }
 
     _trackInstalling(worker) {
@@ -134,14 +165,11 @@ window.updateApp = function() {
     applogic.updateApp();
 };
 
-window.subcribeNot =function(){
 
-    window.notService= new PushService();
-
-    window.sendNot=function(){
-        window.notService.sendNot();
-    }
+window.sendNot=function(){
+    window.applogic.sendNot();
 };
+
 
 
 
