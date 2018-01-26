@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v29';
+var staticCacheName = 'weater-static-v1';
 var allCaches = [
     staticCacheName
 ];
@@ -23,7 +23,6 @@ self.addEventListener('install', function(event) {
                 'js/weater-service.js',
                 'js/dbService.js',
                 'js/Informer.js',
-                'js/PushService.js',
                 'js/appLogic.js',
                 'weater_icons.json',
                 '16days.json',
