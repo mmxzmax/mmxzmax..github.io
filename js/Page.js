@@ -19,11 +19,7 @@ class Page{
                     <button  class="button" id="data-get-coords-city" onclick="getCityCoordsWeater();">Обновить для города</button>
                 </div>
 
-                <div class="form-row">
-                     <button class="button"  onclick="subcribeNot();">Подписаться на уведомления</button>
-                        <br><br>
-                     <button class="button"  onclick="sendNot();">тест</button>
-                </div>
+
             </div>
         `;
         this.render();

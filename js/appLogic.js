@@ -27,26 +27,6 @@ class AppLogic{
                 this._trackInstalling(reg.installing);
             });
 
-            return reg.pushManager.getSubscription()
-                .then(function(subscription) {
-                    if (subscription) {
-                        return subscription;
-                    }
-                    return reg.pushManager.subscribe({ userVisibleOnly: true });
-                }).then(function(subscription) {
-                    self.endpoint = subscription.endpoint;
-                    document.getElementById('curl').textContent = 'curl -H "TTL: 60" -X POST ' + self.endpoint;
-                    fetch('./register', {
-                        method: 'post',
-                        headers: {
-                            'Content-type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            endpoint: subscription.endpoint
-                        })
-                    });
-                });
-
         });
  
 
@@ -58,16 +38,7 @@ class AppLogic{
         });
 
     }
-    sendNot(){
-        var delay = 20;
-        var ttl = 0;
-        fetch('./sendNotification?endpoint=' + this.endpoint + '&delay=' + delay +
-            '&ttl=' + ttl,
-            {
-                method: 'post'
-            }
-        );
-    }
+
 
     _trackInstalling(worker) {
         var indexController = this;
@@ -165,10 +136,6 @@ window.updateApp = function() {
     applogic.updateApp();
 };
 
-
-window.sendNot=function(){
-    window.applogic.sendNot();
-};
 
 
 
