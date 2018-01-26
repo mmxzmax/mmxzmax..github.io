@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v26';
+var staticCacheName = 'weater-static-v22';
 var allCaches = [
     staticCacheName
 ];
@@ -11,7 +11,7 @@ self.addEventListener('install', function(event) {
                 '/',
                 'js/plugins.js',
                 'js/main.js',
-                'css/main.css?v=22',
+                'css/main.css',
                 'js/jquery.js',
                 'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
                 'js/idb.js',
@@ -23,6 +23,7 @@ self.addEventListener('install', function(event) {
                 'js/weater-service.js',
                 'js/dbService.js',
                 'js/Informer.js',
+                'js/PushService.js',
                 'js/appLogic.js',
                 'weater_icons.json',
                 '16days.json',

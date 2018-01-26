@@ -1,4 +1,5 @@
 window.dataBase = new AppDb('weater-pwa','keyval-store');
+
 class AppLogic{
     constructor(){
         this.setEvents();
@@ -132,4 +133,15 @@ window.applogic= new AppLogic();
 window.updateApp = function() {
     applogic.updateApp();
 };
+
+window.subcribeNot =function(){
+
+    window.notService= new PushService();
+
+    window.sendNot=function(){
+        window.notService.sendNot();
+    }
+};
+
+
 

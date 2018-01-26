@@ -2,6 +2,7 @@ class Informer{
     constructor(){
         this.informer=document.getElementById('informer');    
     }
+     
     showMessage(message){
         let template=`<div class="informer-body"><i onclick="Informer.hideInformer()">close</i><p>${message}</p></div>`;
         this.informer.innerHTML=template;
@@ -17,6 +18,7 @@ class Informer{
         this.informer.innerHTML=template;
         this.informer.classList.add('show');
     }
+    
     static hideInformer(){
         document.getElementById('informer').classList.remove('show');
     }

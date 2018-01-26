@@ -29,6 +29,7 @@ class DaysWidget{
             block+=template;
         }
          return block;
+
     }
     static toCelsium(temp) {
         return Math.round((temp-273) * 100) / 100;

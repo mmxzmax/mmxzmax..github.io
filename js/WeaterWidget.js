@@ -58,6 +58,8 @@ class WeaterWidget{
             }
             icon=WeaterWidget.choozeIcon(this.icons,data.weather[0].icon);
         }
+
+
         document.getElementById('weater-widget').innerHTML=this.template(data,date,icon,temp,tempVarIcon);
         console.log('weater widget ready');
     }

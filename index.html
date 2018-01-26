@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather</title>
+    <title>Title</title>
     <link rel="stylesheet" href="css/main.css">
 	<link rel="manifest" href="manifest.json">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
 <div class="wraper">
 	<div id="load" class="loading">
 		<div class="percent">
@@ -19,11 +18,10 @@
 	<header class="header">
 		<button id="settings" class="button">≡</button>
 	</header>
-	<!--app block-->
 	<div id="app" class="app"></div>
-	<!--app block-->
 	<div id="informer" class="informer"></div>
 </div>
+<span id="curl" style="display: none"></span>
 <!--Список библиотек для загрузчика-->
 <script type="text/javascript">
 	var libs=[
@@ -38,13 +36,12 @@
 		'js/weater-service.js',
 		'js/dbService.js',
 		'js/Informer.js',
+		'js/PushService.js',
 		'js/appLogic.js'
 	];
 </script>
 <!--end Список библиотек для загрузчика-->
-	<!--Библиотеки загружаются по порядку-->
-<script type="text/javascript" src="js/plugins.js"></script><!--тут полифил Promise-->
-<script type="text/javascript" src="js/main.js"></script><!--входная точка приложения-->
-
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

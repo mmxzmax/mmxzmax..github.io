@@ -25,6 +25,7 @@ class PageRenderer{
                     resolve(xhr.responseText);
                 }
             }
+
         })
     }
     initUi(){
