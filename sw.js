@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v28';
+var staticCacheName = 'weater-static-v29';
 var allCaches = [
     staticCacheName
 ];
@@ -80,11 +80,3 @@ self.addEventListener('message', function(event) {
     }
 });
 
-
-self.addEventListener('push', function(event) {
-    event.waitUntil(
-        self.registration.showNotification('Weather PWA', {
-            body: 'Hello word!'
-        })
-    );
-});
