@@ -61,7 +61,6 @@ class WeaterWidget{
 
 
         document.getElementById('weater-widget').innerHTML=this.template(data,date,icon,temp,tempVarIcon);
-        console.log('weater widget ready');
     }
 }
  

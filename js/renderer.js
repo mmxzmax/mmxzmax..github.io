@@ -6,7 +6,6 @@ class PageRenderer{
         this.getIcons('weater_icons.json').then((respond)=>{
             this.icons=JSON.parse(respond);
         });
-        console.log('render ready');
     }
     buildApp(){
         this.initUi();
@@ -18,7 +17,6 @@ class PageRenderer{
             xhr.send();
             xhr.onreadystatechange = function() { // (3)
                 if (xhr.readyState != 4) return;
-                console.log('getting icons');
                 if (xhr.status != 200) {
                     reject(xhr.status)
                 } else {

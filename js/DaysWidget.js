@@ -73,6 +73,5 @@ class DaysWidget{
     }
     render(){
         document.getElementById('days-widget').innerHTML=this.template(this.data.list);
-        console.log('daysWidget ready')
     }
 }

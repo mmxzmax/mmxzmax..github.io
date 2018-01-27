@@ -13,7 +13,6 @@
              xhr.send();
              xhr.onreadystatechange = function () { // (3)
                  if (xhr.readyState != 4) return;
-                 console.log('getting weater');
                  if (xhr.status != 200) {
                      reject(xhr.status)
                  } else {
@@ -35,7 +34,6 @@
              xhr.send();
              xhr.onreadystatechange = function () { // (3)
                  if (xhr.readyState != 4) return;
-                 console.log('getting weater');
                  if (xhr.status != 200) {
                      reject(xhr.status)
                  } else {

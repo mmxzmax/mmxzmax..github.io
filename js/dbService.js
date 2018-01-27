@@ -29,7 +29,6 @@ class AppDb{
             keyValStore.put(data, index);
             return tx.complete;
         }).then(function() {
-            console.log('Added data:',index);
         });
     }
     /**

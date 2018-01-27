@@ -1,5 +1,5 @@
 
-var staticCacheName = 'weater-static-v3';
+var staticCacheName = 'weater-static-v5';
 var allCaches = [
     staticCacheName
 ];
@@ -8,9 +8,9 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
-                '/',
+                '/sceleton.html',
                 'js/plugins.js',
-                'js/main.js',
+                'js/cashed-main.js',
                 'css/main.css',
                 'js/jquery.js',
                 'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
@@ -61,7 +61,7 @@ self.addEventListener('fetch', function(event) {
 
     if (requestUrl.origin === location.origin) {
         if (requestUrl.pathname === '/') {
-            event.respondWith(caches.match('/'));
+            event.respondWith(caches.match('/sceleton.html'));
             return;
         }
     }

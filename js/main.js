@@ -9,7 +9,6 @@ class WeaterApp{
         this.initPercentChange=1;
         this.appVidget=document.getElementById('app');
         this.initApp();
-
     }
     loadLibs(lib) {
         return new Promise((resolve, reject)=>{
@@ -18,18 +17,11 @@ class WeaterApp{
             document.body.appendChild(curLib);
             curLib.src=lib;
             curLib.async=true;
-            console.log(`loading ${lib}`);
             var self=this;
-            var start=new Date();
-
             curLib.onload = function() {
                 self.initPercent=self.initPercent+self.initPercentChange;
                 WeaterApp.loadInfo('load'+lib,self.initPercent);
-                console.log(`${lib} ok`);
                 resolve();
-                let end=new Date();
-                let loadingTime=new Date(end-start);
-                console.log('ready after:', loadingTime.getMilliseconds(),'ms');
             };
             curLib.addEventListener('error',function(e){
                 "use strict";
@@ -40,9 +32,6 @@ class WeaterApp{
     }
     initApp() {
         var self=this;
-        this.appVidget.classList.add('loading');
-        self.initPercentChange=Math.round(self.loadVidget.offsetWidth/self.libs.length);
-        console.log('шаг',self.initPercentChange);
         if(this.libs.length>1){
             var i=0;
             var pipe= list(libs);
@@ -51,9 +40,7 @@ class WeaterApp{
         } else {
             this.loadLibs(this.libs[0]).then(
                 ()=>{
-                    this.appVidget.classList.remove('loading');
                     WeaterApp.loadInfo('ready',this.loadVidget.offsetWidth);
-                    console.log('load success');
                     this.start();
                 }
             ).catch((data)=>{
@@ -81,7 +68,7 @@ class WeaterApp{
             } else {
                 self.appVidget.classList.remove('loading');
                 WeaterApp.loadInfo('ready',loadVidgetWidth);
-                console.log('load success');
+               
                 self.start();
             }
         }
@@ -108,8 +95,7 @@ class WeaterApp{
 }
 window.app= new WeaterApp(libs,appStart);
 function appStart(){
-    console.log('ready');
-    window.page= new PageRenderer();
-    window.page.buildApp();
+  
+   
 }
 "use strict";

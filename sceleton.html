@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="manifest" href="manifest.json">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="wraper">
+	<div id="load" class="loading" data-message="ready">
+		<div class="percent">
+			<span id="load-inner" style="width: 412px;"></span>
+		</div>
+	</div>
+	<header class="header">
+		<button id="settings" class="button">≡</button>
+	</header>
+	<div id="app" class="app">
+		<div id="weater-widget" class="weater-widget">
+
+		</div>
+
+		<div id="days-widget" class="days-widget">
+
+		</div>
+
+		<div class="control-form">
+			<div class="form-row">
+				<button class="button" id="data-get-coords" onclick="getYourCoordsWeater();">Обновить для текущего положения</button>
+			</div>
+			<div class="form-row">
+				<input id="city" type="text" name="city" placeholder="city">
+				<button class="button" id="data-get-coords-city" onclick="getCityCoordsWeater();">Обновить для города</button>
+			</div>
+		</div>
+	</div>
+	<div id="informer" class="informer"></div>
+</div>
+<span id="curl" style="display: none"></span>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script type="text/javascript" src="js/idb.js" ></script>
+<script type="text/javascript" src="js/Page.js"></script>
+<script type="text/javascript" src="js/WeaterWidget.js" ></script>
+<script type="text/javascript" src="js/DaysWidget.js" ></script>
+<script type="text/javascript" src="js/renderer.js" ></script>
+<script type="text/javascript" src="js/LocationService.js" ></script>
+<script type="text/javascript" src="js/weater-service.js" ></script>
+<script type="text/javascript" src="js/dbService.js" ></script>
+<script type="text/javascript" src="js/Informer.js" ></script>
+<script type="text/javascript" src="js/appLogic.js" ></script>
+<script type="text/javascript" src="js/cashed-main.js"></script>
+</body>
+</html>
