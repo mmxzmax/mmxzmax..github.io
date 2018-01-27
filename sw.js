@@ -28,6 +28,8 @@ self.addEventListener('install', function(event) {
                 '16days.json',
                 'resp.json',
                 'manifest.json',
+                'img/icon_512.png',
+                'img/icon_192.png',
                 'img/icon_152.png',
                 'img/icon_120.png',
                 'img/icon_80.png',
