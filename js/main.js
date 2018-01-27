@@ -60,14 +60,14 @@ class WeaterApp{
             let increnent=loadVidgetWidth/libsCount;
             var it=pipe.next();
             if(!it.done){
-                WeaterApp.loadInfo('loading:'+libs[i],increnent*i);
+                WeaterApp.loadInfo('setup'+libs[i],increnent*i);
                 i++;
                it.value.then(()=>{
                    load(libs,pipe);
                })
             } else {
                 self.appVidget.classList.remove('loading');
-                WeaterApp.loadInfo('ready',loadVidgetWidth);
+                WeaterApp.loadInfo('ok',loadVidgetWidth);
                
                 self.start();
             }
@@ -82,7 +82,7 @@ class WeaterApp{
         vidget.setAttribute('data-message',message);
         cur.style.width=parseInt(percent)+'px';
         if(percent>=vidget.offsetWidth){
-            setTimeout(()=>vidget.classList.remove('show'),200);
+            vidget.classList.remove('show');
         }
     }
     start (){
