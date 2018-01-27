@@ -10,17 +10,6 @@ class Page{
 
             <div id="days-widget" class="days-widget"></div>
 
-            <div class="control-form">
-                <div class="form-row">
-                    <button class="button" id="data-get-coords" onclick="getYourCoordsWeater();">Обновить для текущего положения</button>
-                </div>
-                <div class="form-row">
-                    <input id="city" type="text" name="city" placeholder="city" >
-                    <button  class="button" id="data-get-coords-city" onclick="getCityCoordsWeater();">Обновить для города</button>
-                </div>
-
-
-            </div>
         `;
         this.render();
     }

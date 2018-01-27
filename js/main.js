@@ -95,7 +95,7 @@ class WeaterApp{
 }
 window.app= new WeaterApp(libs,appStart);
 function appStart(){
-  
-   
+    window.page= new PageRenderer();
+    window.page.buildApp();
 }
 "use strict";

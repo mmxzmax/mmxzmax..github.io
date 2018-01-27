@@ -67,8 +67,6 @@ class AppLogic{
                     }).catch(()=>this.informer.showMessage('невозможно подключиться к сервису погоды!'));
                 }).catch(()=>this.informer.showMessage('Сервис геолокации недоступен!'))
             }
-
-
         });
         window.dataBase.getDataFromDb('days').then((weater)=>{
             if(weater){
@@ -96,6 +94,17 @@ class AppLogic{
 
         });
 
+        let start;
+
+        $('.control-form').on('touchstart',function(e) {
+            start=e.changedTouches[0].pageX;
+        });
+        $('.control-form').on('touchend',function(e) {
+            if(start-200>e.changedTouches[0].pageX){
+                $('.control-form').removeClass('show');
+            }
+        });
+
         window.getYourCoordsWeater = function(){
             LocationService.getYourCoords().then((cords)=>{
                 WeaterService.getWeater(cords,'91f72fb1d01d11d45af8058227e50524').then((response)=>{
@@ -108,7 +117,8 @@ class AppLogic{
                     window.page.renderDays(weater);
                     window.dataBase.setDataToDb('days',weater)
                 }).catch(()=>this.informer.showMessage('невозможно подключиться к сервису погоды!'));
-            })
+            });
+            $('.control-form').removeClass('show');
         };
 
         window.getCityCoordsWeater = function(){
@@ -124,7 +134,8 @@ class AppLogic{
                     window.page.renderDays(weater);
                     window.dataBase.setDataToDb('days',weater)
                 }).catch(()=>this.informer.showMessage('невозможно подключиться к сервису погоды!'));
-            })
+            });
+            $('.control-form').removeClass('show');
         }
     }
     updateApp(){
